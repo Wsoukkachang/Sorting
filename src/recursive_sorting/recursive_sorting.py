@@ -49,10 +49,33 @@ print(merge(Arr1, Arr2))
 
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
-def merge_sort( arr ):
+def merge_sort(arr):
     # TO-DO
 
+    # Base case
+    if len(arr) <= 1:
+        return arr
+
+    # Length of array
+    arr_length = len(arr)
+
+    # Finds the middle element
+    middle = arr_length // 2
+
+    # Sorts everything on the left
+    sorted_left = merge_sort(arr[:middle])
+
+    # Sorts everything on right
+    sorted_right = merge_sort(arr[middle:])
+
+    # Merge both sorted array here
+    arr = merge(sorted_left, sorted_right)
+
     return arr
+
+arr3 = [1, 4, 5, 2, 3]
+print(merge_sort(arr3))
+
 
 
 # STRETCH: implement an in-place merge sort algorithm
